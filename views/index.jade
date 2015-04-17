@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	h2(data-bind="text: observable")
+
+block js
+	script.
+		$(function() {
+			var viewModel = function () {
+				var self = this;
+
+				self.observable = ko.observable('Knockout Tutorial');
+			}
+
+			ko.applyBindings(new viewModel());
+		});
